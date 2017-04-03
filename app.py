@@ -39,7 +39,11 @@ def get_data_from_diary():
     for student in students:
         print "{} student attendance count: {}".format(student, diary.get_student_attendance_count(student))
 
+def dump_diary():
+    print diary.dump()
+
 
 if __name__ == "__main__":
     initialize_diary()
     get_data_from_diary()
+    dump_diary()
