@@ -11,13 +11,12 @@ NUMBER_OF_SCORES = 150
 NUMBER_OF_ATTENDANCES = 15
 DAYS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-diary = Diary()
-
 students = [
     Student("first student name", "first student surname"),
     Student("second student name", "second student surname"),
     Student("third student name", "third student surname"),
 ]
+diary = Diary(students)
 
 if __name__ == "main":
     for i in xrange(NUMBER_OF_SCORES):
