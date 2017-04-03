@@ -16,14 +16,11 @@ students = [
     Student("third student name", "third student surname"),
 ]
 
-for i in xrange(NUMBER_OF_SCORES):
-    score = Score(random.choice(students), random.choice(CLASSES), random.choice(SCORES))
-    diary.add_score(score)
+if __name__ == "main":
+    for i in xrange(NUMBER_OF_SCORES):
+        score = Score(random.choice(students), random.choice(CLASSES), random.choice(SCORES))
+        diary.add_score(score)
 
-print "Overall average score == {}".format(diary.get_average_score_value())
-for clazz in CLASSES:
-    print "Average score in {} == {}".format(clazz, diary.get_average_score_value_in_class(clazz))
-
-
-
-# todo: add main function check
+    print "Overall average score == {}".format(diary.get_average_score_value())
+    for clazz in CLASSES:
+        print "Average score in {} == {}".format(clazz, diary.get_average_score_value_in_class(clazz))
