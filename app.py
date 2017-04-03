@@ -12,9 +12,9 @@ NUMBER_OF_ATTENDANCES = 15
 DAYS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 students = [
-    Student("first student name", "first student surname"),
-    Student("second student name", "second student surname"),
-    Student("third student name", "third student surname"),
+    Student("Adam", "Nowak"),
+    Student("Janusz", "Golonka"),
+    Student("Henryk", "Janowski"),
 ]
 diary = Diary(students)
 
