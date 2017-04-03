@@ -21,6 +21,9 @@ class Diary:
     def get_average_score_value_in_class(self, clazz):
         return numpy.mean([score.value for score in self.scores if score.clazz == clazz])
 
+    def get_students(self):
+        return self.students
+
     def _validate_student(self, student):
         if not self._is_existing_student(student):
             raise Exception("{} does not exist in this diary".format(student))
