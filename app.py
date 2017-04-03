@@ -18,7 +18,8 @@ students = [
 ]
 diary = Diary(students)
 
-if __name__ == "main":
+
+def initialize_diary():
     for i in xrange(NUMBER_OF_SCORES):
         score = Score(random.choice(students), random.choice(CLASSES), random.choice(SCORES))
         diary.add_score(score)
@@ -28,6 +29,17 @@ if __name__ == "main":
             if random.choice([True, False]):
                 diary.add_attendance(Attendance(student, day))
 
+
+def get_data_from_diary():
     print "Overall average score == {}".format(diary.get_average_score_value())
+
     for clazz in CLASSES:
         print "Average score in {} == {}".format(clazz, diary.get_average_score_value_in_class(clazz))
+
+    for student in students:
+        print "{} student attendance count: {}".format(student, diary.get_student_attendance_count(student))
+
+
+if __name__ == "__main__":
+    initialize_diary()
+    get_data_from_diary()
