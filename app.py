@@ -19,6 +19,5 @@ for i in xrange(NUMBER_OF_SCORES):
     score = Score(random.choice(students), random.choice(SCORES))
     diary.add_score(score)
 
-
-
-    # todo: add main function check
+print diary.get_average_score_value()
+# todo: add main function check

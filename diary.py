@@ -1,3 +1,6 @@
+import numpy
+
+
 class Diary:
     def __init__(self):
         self.scores = []
@@ -8,3 +11,6 @@ class Diary:
 
     def add_attendance(self, attendance):
         self.attendances.append(attendance)
+
+    def get_average_score_value(self):
+        return numpy.mean([score.value for score in self.scores])
