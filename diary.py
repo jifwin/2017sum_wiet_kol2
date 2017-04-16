@@ -1,5 +1,6 @@
 import numpy
 import json
+from flatten_dict import flatten
 
 
 class Diary:
@@ -30,7 +31,8 @@ class Diary:
         self.attendances[student][clazz][date] = True
 
     def get_average_score_value(self):
-        return numpy.mean([score.value for score in self.scores])
+        flattened_scores = flatten(self.scores)
+        return numpy.mean(flattened_scores.values())
 
     def get_average_score_value_in_class(self, clazz):
         return numpy.mean([score.value for score in self.scores if score.clazz == clazz])
