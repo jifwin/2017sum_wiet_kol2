@@ -31,11 +31,13 @@ class Diary:
         self.attendances[student][clazz][date] = True
 
     def get_average_score_value(self):
-        flattened_scores = flatten(self.scores)
-        return numpy.mean(flattened_scores.values())
+        return numpy.mean(self._get_flattened_scores().values())
 
     def get_average_score_value_in_class(self, clazz):
-        return numpy.mean([score.value for score in self.scores if score.clazz == clazz])
+        class_scores = [score_value for (student, current_class), score_value
+                        in self._get_flattened_scores().iteritems()
+                        if current_class == clazz]
+        return numpy.mean(class_scores)
 
     def get_student_attendance_count(self, student):
         self._validate_student(student)
@@ -43,6 +45,9 @@ class Diary:
 
     def dump(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+    def _get_flattened_scores(self):
+        return flatten(self.scores)
 
     def _validate_class(self, clazz):
         self._validate_entity(clazz, self.classes)
