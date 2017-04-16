@@ -41,7 +41,7 @@ class Diary:
 
     def get_student_attendance_count(self, student):
         self._validate_student(student)
-        return len([attendance for attendance in self.attendances if attendance.student == student])
+        return numpy.sum(flatten(self.attendances[student]).values())
 
     def dump(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
