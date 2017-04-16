@@ -22,7 +22,7 @@ class Diary:
     def add_score(self, clazz, student, value):
         self._validate_class(clazz)
         self._validate_student(student)
-        self.scores[clazz][student] = value
+        self.scores[student][clazz] = value
 
     def add_attendance(self, clazz, student, date):
         self._validate_student(student)
