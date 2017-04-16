@@ -35,10 +35,6 @@ class Diary:
     def get_average_score_value_in_class(self, clazz):
         return numpy.mean([score.value for score in self.scores if score.clazz == clazz])
 
-    #todo: remove
-    def get_students(self):
-        return self.students
-
     def get_student_attendance_count(self, student):
         self._validate_student(student)
         return len([attendance for attendance in self.attendances if attendance.student == student])
