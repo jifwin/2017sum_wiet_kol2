@@ -7,14 +7,14 @@ SCORES = [5.0, 4.5, 4.0, 3.5, 3.0, 2.0]
 CLASSES = ["python", "algebra", "circuit theory", "physics", "radio"]
 NUMBER_OF_SCORES = 150
 NUMBER_OF_ATTENDANCES = 15
-DAYS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+DATES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 STUDENTS = [
     Student("Adam", "Nowak"),
     Student("Janusz", "Golonka"),
     Student("Henryk", "Janowski"),
 ]
 
-diary = Diary(STUDENTS)
+diary = Diary(STUDENTS, CLASSES, DATES)
 
 
 def initialize_diary():
@@ -22,10 +22,10 @@ def initialize_diary():
         diary.add_score(random.choice(CLASSES), random.choice(STUDENTS), random.choice(SCORES))
 
     for clazz in CLASSES:
-        for day in DAYS:
+        for date in DATES:
             for student in STUDENTS:
                 if random.choice([True, False]):
-                    diary.add_attendance(clazz, student, day)
+                    diary.add_attendance(clazz, student, date)
 
 
 def get_data_from_diary():
