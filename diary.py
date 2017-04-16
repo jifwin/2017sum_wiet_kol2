@@ -1,6 +1,6 @@
 import numpy
-import json
 from flatten_dict import flatten
+import jsonpickle
 
 
 class Diary:
@@ -44,7 +44,7 @@ class Diary:
         return numpy.sum(flatten(self.attendances[student]).values())
 
     def dump(self):
-        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        return jsonpickle.encode(self)
 
     def _get_flattened_scores(self):
         return flatten(self.scores)

@@ -1,7 +1,9 @@
 import random
+from collections import namedtuple
 
 from diary import Diary
-from student import Student
+
+Student = namedtuple("Student", ('first_name', 'surname'))
 
 SCORES = [5.0, 4.5, 4.0, 3.5, 3.0, 2.0]
 CLASSES = ["python", "algebra", "circuit theory", "physics", "radio"]
@@ -15,7 +17,6 @@ STUDENTS = [
 ]
 
 diary = Diary(STUDENTS, CLASSES, DATES)
-
 
 def initialize_diary():
     for i in xrange(NUMBER_OF_SCORES):
