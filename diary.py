@@ -24,9 +24,10 @@ class Diary:
         self._validate_student(student)
         self.scores[clazz][student] = value
 
-    def add_attendance(self, attendance):
-        self._validate_student(attendance.student)
-        self.attendances.append(attendance)
+    def add_attendance(self, clazz, student, date):
+        self._validate_student(student)
+        self._validate_date(date)
+        self.attendances[student][clazz][date] = True
 
     def get_average_score_value(self):
         return numpy.mean([score.value for score in self.scores])
