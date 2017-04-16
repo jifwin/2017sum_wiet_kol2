@@ -50,12 +50,14 @@ def dump_diary(diary, target_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', action="store", dest="dump_path")
+    parser.add_argument('-f', action="store", dest="dump_path", required=True)
+    parser.add_argument('-n', action="store", dest="new_diary")
     args = parser.parse_args()
     dump_path = args.dump_path
 
-    newDiary = initialize_diary()
-    dump_diary(newDiary, dump_path)
-
-    loadedDiary = load_diary(dump_path)
-    get_data_from_diary(loadedDiary)
+    if args.new_diary:
+        newDiary = initialize_diary()
+        dump_diary(newDiary, dump_path)
+    else:
+        loadedDiary = load_diary(dump_path)
+        get_data_from_diary(loadedDiary)
