@@ -3,14 +3,26 @@ import json
 
 
 class Diary:
-    def __init__(self, students):
-        self.scores = []
-        self.attendances = []
+    def __init__(self, students, classes, dates):
+        self.scores = {}
+        self.attendances = {}
+        self.classes = classes
         self.students = students
+        self.dates = dates
 
-    def add_score(self, score):
-        self._validate_student(score.student)
-        self.scores.append(score)
+        for student in students:
+            self.scores[student] = {}
+            self.attendances[student] = {}
+            for clazz in classes:
+                self.scores[student][clazz] = []
+                self.attendances[student][clazz] = {}
+                for date in dates:
+                    self.attendances[student][clazz][date] = False
+
+    def add_score(self, clazz, student, value):
+        self._validate_class(clazz)
+        self._validate_student(student)
+        self.scores[clazz][student] = value
 
     def add_attendance(self, attendance):
         self._validate_student(attendance.student)
@@ -32,9 +44,15 @@ class Diary:
     def dump(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-    def _validate_student(self, student):
-        if not self._is_existing_student(student):
-            raise Exception("{} does not exist in this diary".format(student))
+    def _validate_class(self, clazz):
+        self._validate_class(clazz, self.classes)
 
-    def _is_existing_student(self, student):
-        return student in self.students
+    def _validate_student(self, student):
+        self._validate_entity(student, self.students)
+
+    def _validate_date(self, date):
+        self._validate_date(date, self.dates)
+
+    def _validate_entity(self, entity, allowed_values):
+        if not entity in allowed_values:
+            raise Exception("{} does not exist in this diary".format(entity))
