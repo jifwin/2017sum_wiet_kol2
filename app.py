@@ -40,7 +40,7 @@ def get_data_from_diary(diary):
         print "Average score in {} == {}".format(clazz, diary.get_average_score_value_in_class(clazz))
 
     for student in STUDENTS:
-        print "{} student attendance count: {}".format(student, diary.get_student_attendance_count(student))
+        print "{} attendance count: {}".format(student, diary.get_student_attendance_count(student))
 
 
 def dump_diary(diary, target_path):
