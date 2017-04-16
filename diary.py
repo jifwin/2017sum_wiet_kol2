@@ -46,14 +46,14 @@ class Diary:
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     def _validate_class(self, clazz):
-        self._validate_class(clazz, self.classes)
+        self._validate_entity(clazz, self.classes)
 
     def _validate_student(self, student):
         self._validate_entity(student, self.students)
 
     def _validate_date(self, date):
-        self._validate_date(date, self.dates)
+        self._validate_entity(date, self.dates)
 
     def _validate_entity(self, entity, allowed_values):
-        if not entity in allowed_values:
+        if entity not in allowed_values:
             raise Exception("{} does not exist in this diary".format(entity))
